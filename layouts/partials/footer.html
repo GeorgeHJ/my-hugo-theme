@@ -1,10 +1,20 @@
-{{ partial "nextprev.html" . -}}
-{{ partial "taglist.html" . -}}
-</article>
-</main>
 <footer>
-	<a href="{{ .Site.BaseURL }}">{{ .Site.BaseURL }}</a><br><br>
-	<a href="/index.xml"><img src="/rss.svg" style="max-height:1.5em" alt="RSS Feed" title="Subscribe via RSS for updates."></a>
+	{{ partial "taglist.html" . -}}
+	{{ partial "nextprev.html" . -}}
+	<div class="bottom-container">
+    <ul class="bottom-menu">
+      <li> <a href="{{ .Site.BaseURL }}">{{ .Site.BaseURL }}</a>
+    </li>
+    <li>
+		{{ if .IsNode }}
+		<a href="{{ .Permalink }}index.xml"><img src="/rss.svg" style="max-height:1.5em" alt="RSS Feed" title="Subscribe via RSS for updates."></a>
+    </li>
+		{{ end }}
+		{{ if .IsPage }}
+		<a href="{{ .Site.BaseURL }}{{ .Section }}/index.xml"><img src="/rss.svg" style="max-height:1.5em" alt="RSS Feed" title="Subscribe via RSS for updates."></a>
+		{{ end }}
+    </ul>
+	</div>
 </footer>
 </body>
 </html>
