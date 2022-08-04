@@ -1,5 +1,7 @@
 {{ partial "header.html" . -}}
-<header><h1>{{ .Title }}</h1></header>
+<main>
 <article>
+<h2 id="tag_{{ .Title }}">{{ .Title | title }}</h2>
 {{ .Content -}}
+</main>
 {{ partial "footer.html" . }}
