@@ -1,10 +1,13 @@
-{{ if or .Next .Prev -}}
-<div id="nextprev">
-{{- with .Prev }}
-<a href="{{ .RelPermalink}}"><div id="prevart">Previous:<br>{{.Title}}</div></a>
-{{ end -}}
-{{- with .Next -}}
-<a href="{{ .RelPermalink}}"><div id="nextart">Next:<br>{{.Title}}</div></a>
-{{ end -}}
+<div class="nextprev">
+
+	<div class="prev-art">
+	{{- with .PrevInSection }}
+	<a href="{{ .RelPermalink}}">Previous:<br>{{.Title}}</a>
+	{{ end -}}
+  </div><div class="next-art">
+	{{- with .NextInSection -}}
+	<a href="{{ .RelPermalink}}">Next:<br>{{.Title}}</a>
+	{{ end -}}
+  </div>
+
 </div>
-{{ end -}}
