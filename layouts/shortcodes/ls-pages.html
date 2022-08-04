@@ -1,0 +1,14 @@
+{{ $number := .Get "number" }}
+{{ $section := .Get "section" }}
+<h4>Latest {{ $section | title }} </h4>
+<ul>
+	{{- range .Site.RegularPages | first $number }}
+	{{ if
+	and (ne .Title "About")
+	(ne .Title "Articles")
+	(ne .Title "Posts")
+	(eq .Section $section) }}
+	<li><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006 Jan 02" }}</time> &ndash; <a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+	{{ end }}
+	{{ end -}}
+</ul>
